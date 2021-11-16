@@ -228,7 +228,7 @@ def export_edgetpu(keras_model, im, file, prefix=colorstr('Edge TPU:')):
         f = str(file).replace('.pt', '-int8_edgetpu.tflite')
         f_tfl = str(file).replace('.pt', '-int8.tflite')  # TFLite model
 
-        cmd = f"edgetpu_compiler -s -a {f_tfl}"
+        cmd = f"edgetpu_compiler -s -a \"{f_tfl}\""
         subprocess.run(cmd, shell=True, check=True)
 
         LOGGER.info(f'{prefix} export success, saved as {f} ({file_size(f):.1f} MB)')
